@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\{BelongsTo, BelongsToMany};
 
 class Test extends Model
 {
@@ -33,6 +33,11 @@ class Test extends Model
             $this->score > 80 && $this->score <= 90 => 300,
             $this->score > 90 && $this->score <= 100 => 500,
         };
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
     }
 
     public function manager(): BelongsTo

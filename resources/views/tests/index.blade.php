@@ -7,6 +7,12 @@
         </div>
     @endif
 
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
     <div class="card card-company-table">
         <div class="card-header">
             <h4 class="card-title">Tests</h4>
@@ -35,7 +41,9 @@
                                 <form onsubmit="return confirm('Are you sure you want to delete this item?')" action="{{ route('tests.destroy',$test->id) }}" method="POST">
 
                                     <a class="btn btn-sm btn-info" href="{{ route('tests.show',$test->id) }}">Show</a>
+                                    @if(auth()->user()->is_admin || auth()->user()->tests->contains('id', $test->id))
                                     <a class="btn btn-sm btn-info" href="{{ route('tests.setScore',$test->id) }}">Set score</a>
+                                    @endif
 
                                     @if(auth()->user()->is_admin)
                                     <a class="btn btn-sm btn-primary" href="{{ route('tests.edit',$test->id) }}">Edit</a>

@@ -17,21 +17,21 @@
                 <div class="card-body">
 
                     <div class="row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Full name</strong></label>
+                        <label class="col-md-4 col-form-label text-md-end text-start"><strong>Full name</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $test->full_name }}
                         </div>
                     </div>
 
                     <div class="row">
-                        <label for="code" class="col-md-4 col-form-label text-md-end text-start"><strong>Date</strong></label>
+                        <label class="col-md-4 col-form-label text-md-end text-start"><strong>Date</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $test->test_date }}
                         </div>
                     </div>
 
                     <div class="row">
-                        <label for="code" class="col-md-4 col-form-label text-md-end text-start"><strong>Location</strong></label>
+                        <label class="col-md-4 col-form-label text-md-end text-start"><strong>Location</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $test->location }}
                         </div>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="mb-3 row">
-                            <label for="score" class="col-md-4 col-form-label text-md-end text-start">Criteria</label>
+                            <label for="criterion" class="col-md-4 col-form-label text-md-end text-start">Criteria</label>
                             <div class="col-md-6">
                                 <span id="criterion">{{$test->criterion}}</span>
                             </div>

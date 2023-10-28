@@ -84,8 +84,13 @@ class TestController extends Controller
             ->withSuccess('Test is deleted successfully');
     }
 
-    public function setScore(Test $test): View
+    public function setScore(Test $test): mixed
     {
+        if (!auth()->user()->is_admin && !auth()->user()->tests->contains('id', $test->id)) {
+            return redirect()->route('tests.index')
+                ->withError('No permissions for current test');
+        }
+
         return view('tests.set-score', [
             'test' => $test
         ]);

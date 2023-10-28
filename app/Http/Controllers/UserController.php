@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\{User, Test};
 use Illuminate\View\View;
 use App\Http\Requests\{UserStoreRequest, UserUpdateRequest};
 use Illuminate\Http\RedirectResponse;
@@ -59,7 +59,8 @@ class UserController extends Controller
     public function edit(User $user): View
     {
         return view('users.edit', [
-            'user' => $user
+            'user' => $user,
+            'tests' => Test::all(),
         ]);
     }
 
@@ -75,7 +76,7 @@ class UserController extends Controller
         }
 
         $user->is_admin = (bool) $request->is_admin;
-
+        $user->tests()->sync($request->tests);
         $user->save();
 
         return redirect()->back()

@@ -66,6 +66,23 @@
                         </div>
 
                         <div class="mb-3 row">
+                            <label for="test" class="col-md-4 col-form-label text-md-end text-start">tests</label>
+                            <div class="col-md-6">
+                                <select class="form-select" id="selectedTests" name="tests[]" multiple>
+                                    @foreach ($tests as $test)
+                                        <option value="{{ $test->id }}"
+                                                @if ($user->tests->contains('id', $test->id))
+                                                selected
+                                            @endif
+                                        >
+                                        {{ $test->full_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
                             <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Save User">
                         </div>
 
